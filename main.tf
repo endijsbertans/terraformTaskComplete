@@ -1,5 +1,5 @@
 resource "time_sleep" "lolkek" {
-  create_duration = "120s"
+  create_duration = "60s"
 }
 
 provider "aws" {
@@ -28,6 +28,7 @@ depends_on = [time_sleep.lolkek]
       
  }
 }
+
 # provisioner "file" {
      
 #     source      = "~/rootkey.csv"
