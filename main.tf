@@ -1,11 +1,6 @@
 resource "time_sleep" "lolkek" {
   create_duration = "60s"
 }
-
-provider "aws" {
-  profile = "default"
-  region  = "eu-north-1"
-}
 resource "null_resource" "timer" {
 depends_on = [time_sleep.lolkek]
  provisioner "local-exec" {
@@ -15,6 +10,12 @@ depends_on = [time_sleep.lolkek]
       
  }
 }
+
+provider "aws" {
+  profile = "default"
+  region  = "eu-north-1"
+}
+
 resource "aws_instance" "web" {
 
   key_name      = "Endijs" 
