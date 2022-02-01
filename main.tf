@@ -6,6 +6,15 @@ provider "aws" {
   profile = "default"
   region  = "eu-north-1"
 }
+resource "null_resource" "timer" {
+depends_on = [time_sleep.lolkek]
+ provisioner "local-exec" {
+
+  
+   command   = "aws ec2 terminate-instances --instance-ids ${aws_instance.web.id}"
+      
+ }
+}
 resource "aws_instance" "web" {
 
   key_name      = "Endijs" 
@@ -19,15 +28,7 @@ resource "aws_instance" "web" {
   }
 
 }
-resource "null_resource" "timer" {
-depends_on = [time_sleep.lolkek]
- provisioner "local-exec" {
 
-  
-   command   = "aws ec2 terminate-instances --instance-ids ${aws_instance.web.id}"
-      
- }
-}
 
 # provisioner "file" {
      
